@@ -1,6 +1,6 @@
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:18-alpine3.17 AS deps
+FROM --platform=linux/amd64 node:20.8.0-alpine3.17 AS deps
 RUN apk add --no-cache libc6-compat openssl1.1-compat
 WORKDIR /app
 
@@ -21,7 +21,7 @@ RUN \
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:18-alpine3.17 AS builder
+FROM --platform=linux/amd64 node:20.8.0-alpine3.17 AS builder
 ARG DATABASE_URL
 ARG NEXTAUTH_URL
 ARG NEXTAUTH_SECRET
@@ -47,7 +47,7 @@ RUN \
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 node:18-alpine3.17 AS runner
+FROM --platform=linux/amd64 node:20.8.0-alpine3.17 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
